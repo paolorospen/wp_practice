@@ -1,0 +1,112 @@
+/*
+ * htmlのフォントサイズ
+ * @args ベースの画面幅
+ */
+@function rootPx($baseWidth: 1536px) {
+  //   @return math.div(10px, $baseWidth) * 100vw;
+  @return calc(10px / $baseWidth * 100vw);
+}
+/*
+   * ルートのフォントサイズを基準にフォントサイズを可変にする
+   * @args 最大値（デザイン上の数値）
+   */
+@function calcFz($max) {
+  $value: calc($max / 10);
+  @return clamp(10px, #{$value}rem, #{$max}px);
+}
+/*
+   * get_vwの設定
+   */
+@function vw_pc($size, $viewport: 1536) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+
+@function vw_sp($size, $viewport: 375) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+/*
+   * breakpointの設定
+   */
+$widthBasePC: 1536px;
+$widthBaseSP: 768px;
+$widthBaseTablet: 1000px;
+
+@mixin pc {
+  @media screen and (min-width: calc($widthBaseSP)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media screen and (max-width: #{$widthBaseSP - 1px}) {
+    @content;
+  }
+}
+
+@mixin tb {
+  @media screen and (max-width: #{$widthBaseTablet - 1px}) {
+    @content;
+  }
+}
+
+/** --------------------------------
+* cssの値を単位を除いて数字だけにしてくれる関数
+*
+* @param 数字と単位を含む値 10ox, 3remなど
+*/
+@function stripUnit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/** --------------------------------
+* 値の「単位」を取得する関数
+*
+* @param $value 数字と単位を含む値 10ox, 3remなど
+*/
+@function getUnit($value) {
+  @return str-slice($value * 0 + "", 2, -1);
+}
+
+/** --------------------------------
+* pxやremをvwに変換してくれる関数
+*
+* @param $viewport pcデザインの横幅
+* @param $fontSize フォントサイズ(pxでもremでも)
+*/
+$viewport: 1536px;
+
+@function vw($fontSize, $base-vw: $viewport) {
+  $unit: getUnit($fontSize);
+
+  @if $unit == px {
+    @return (stripUnit($fontSize) * 100vw) / stripUnit($base-vw);
+  } @else if $unit == rem {
+    @return (stripUnit($fontSize) * 1000vw) / stripUnit($base-vw);
+  }
+}
+
+/** --------------------------------
+* フォントサイズをレスポンシブで調整する関数
+*
+* @param $pc pcのフォントサイズ
+* @param $sp spのフォントサイズ
+*/
+@function respValue($pc, $sp, $viewport: 1536px) {
+  @return clamp(#{$sp}, #{vw($pc, $viewport)}, #{$pc});
+}
+
+@function respValuePC($pc, $viewport: 1536px) {
+  @return clamp(1px, #{vw($pc, $viewport)}, #{$pc});
+}
+
+//____________________________
+// 使い方
+//____________________________
+// .test {
+//   font-size: responsiveValue(4rem, 2.4rem);
+// }

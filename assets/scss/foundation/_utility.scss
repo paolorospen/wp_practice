@@ -1,0 +1,31 @@
+.pc_contents {
+  display: block !important;
+
+  @include sp {
+    display: none !important;
+  }
+}
+
+.pc_contentsFlex {
+  display: flex !important;
+
+  @include sp {
+    display: none !important;
+  }
+}
+
+.sp_contents {
+  display: none !important;
+
+  @include sp {
+    display: block !important;
+  }
+}
+
+.sp_contentsFlex {
+  display: none !important;
+
+  @include sp {
+    display: flex !important;
+  }
+}

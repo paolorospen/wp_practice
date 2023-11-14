@@ -1,0 +1,40 @@
+// 画像パス
+// $img-root-dir: '/mtx-sports/wp-content/themes/mtx-sports/images';
+$img-root-dir: "../images";
+
+// フォント
+$fontFamilyYuGo: YakuHanJP, "游ゴシック体", "YuGothic", "游ゴシック",
+  "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ",
+  "Meiryo", sans-serif;
+$fontFamilyHiraGo: YakuHanJP, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+  "メイリオ", "Meiryo", sans-serif;
+$fontFamilyYuMin: YakuHanMP, "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3",
+  "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+$fontFamilyHiraMin: YakuHanMP, "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro",
+  "ＭＳ Ｐ明朝", "MS PMincho", serif;
+$fontFamilyMeiryo: YakuHanJP, "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3",
+  "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+$NotoSansJP: YakuHanJP_Noto, "Noto Sans JP", sans-serif;
+$NotoSerif: YakuHanJP, "Noto Serif JP", serif;
+$fontFamilyDin2014: din-2014, sans-serif;
+$FuturaPTBoldCond: futura-pt-condensed, sans-serif;
+$FuturaPTBold: futura-pt-bold, sans-serif;
+$FuturaPT: futura-pt, sans-serif;
+
+@import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap");
+@mixin martelRegular {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin martelBold {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+// COLORS
+$mainColor: #ddc4a4;
+$subColor: #707070;
+$white: #fff;
+$black: #0e0e0e;

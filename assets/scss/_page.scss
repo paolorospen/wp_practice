@@ -1,0 +1,41 @@
+html {
+  margin-top: 0 !important;
+  @include sp {
+    margin-top: 0 !important;
+  }
+}
+
+body {
+  background: $black;
+  color: $mainColor;
+  @include martelRegular;
+  position: relative;
+}
+
+p {
+  @include martelRegular;
+  font-size: respValuePC(16px);
+
+  @include sp {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @include martelBold;
+  font-size: respValuePC(32px);
+
+  @include sp {
+    font-size: 24px;
+  }
+}
+
+a {
+  color: $mainColor;
+}
+main.main {
+  width: 100%;
+}

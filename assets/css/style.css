@@ -1,0 +1,252 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap");
+/*
+ * htmlのフォントサイズ
+ * @args ベースの画面幅
+ */
+/*
+   * ルートのフォントサイズを基準にフォントサイズを可変にする
+   * @args 最大値（デザイン上の数値）
+   */
+/*
+   * get_vwの設定
+   */
+/*
+   * breakpointの設定
+   */
+/** --------------------------------
+* cssの値を単位を除いて数字だけにしてくれる関数
+*
+* @param 数字と単位を含む値 10ox, 3remなど
+*/
+/** --------------------------------
+* 値の「単位」を取得する関数
+*
+* @param $value 数字と単位を含む値 10ox, 3remなど
+*/
+/** --------------------------------
+* pxやremをvwに変換してくれる関数
+*
+* @param $viewport pcデザインの横幅
+* @param $fontSize フォントサイズ(pxでもremでも)
+*/
+/** --------------------------------
+* フォントサイズをレスポンシブで調整する関数
+*
+* @param $pc pcのフォントサイズ
+* @param $sp spのフォントサイズ
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.56;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.pc_contents {
+  display: block !important;
+}
+@media screen and (max-width: 767px) {
+  .pc_contents {
+    display: none !important;
+  }
+}
+
+.pc_contentsFlex {
+  display: flex !important;
+}
+@media screen and (max-width: 767px) {
+  .pc_contentsFlex {
+    display: none !important;
+  }
+}
+
+.sp_contents {
+  display: none !important;
+}
+@media screen and (max-width: 767px) {
+  .sp_contents {
+    display: block !important;
+  }
+}
+
+.sp_contentsFlex {
+  display: none !important;
+}
+@media screen and (max-width: 767px) {
+  .sp_contentsFlex {
+    display: flex !important;
+  }
+}
+
+html {
+  margin-top: 0 !important;
+}
+@media screen and (max-width: 767px) {
+  html {
+    margin-top: 0 !important;
+  }
+}
+
+body {
+  background: #0e0e0e;
+  color: #ddc4a4;
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+}
+
+p {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1px, 1.0416666667vw, 16px);
+}
+@media screen and (max-width: 767px) {
+  p {
+    font-size: 14px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(1px, 2.0833333333vw, 32px);
+}
+@media screen and (max-width: 767px) {
+  h1,
+h2,
+h3,
+h4 {
+    font-size: 24px;
+  }
+}
+
+a {
+  color: #ddc4a4;
+}
+
+main.main {
+  width: 100%;
+}
+
+.kv {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.kv__lead {
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 8.0729166667vw;
+  line-height: 0.8;
+  word-break: break-all;
+  text-transform: uppercase;
+  width: 110%;
+  height: 100vh;
+  position: absolute;
+  display: block;
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.kv__single {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  font-family: "Martel Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 13.0208333333vw;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.posts__container {
+  max-width: 1136px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 150px 0;
+  margin: auto;
+}
+.posts__container .post {
+  background: #131313;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: rotate3d(var(--x), var(--y), 0, var(--angle));
+}
+.posts__container .post__img {
+  height: 200px;
+}
+.posts__container .post__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.posts__container .post__wrap {
+  padding: 20px;
+}
